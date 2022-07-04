@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background: hsl(0,0%,100%);
+}
+.move{
+  background-position: right -120px top -150px;
+}
+.move2{
+  background-position: right -240px top 350px;
+}
+
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+  .move{
+    background-position: right -60px top -30px;
+  }
+}
+@media only screen and (max-width: 1024px){
+	/*laptop */
+  .move{
+    background-position: right -130px top -60px;
+  }
+}
