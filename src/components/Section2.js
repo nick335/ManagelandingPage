@@ -5,12 +5,43 @@ import { nanoid } from "nanoid";
 
 const Data = FeedBackData
 export default function Section2(){
+  const [windowSize, setWindowSize] = React.useState(getWindowSize());
+
+  React.useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+
+  
+  
   const delay = 2500;
 
   const [index, setIndex] = React.useState(0);
+  const timeoutRef = React.useRef(null);
+ 
+  const size = windowSize.innerWidth < 512 ? `translate3d(${-index * 100}vw, 0, 0)` : ''
+  
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
 
   React.useEffect(() => {
-    setTimeout(
+    resetTimeout();
+    timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
           prevIndex === Data.length - 1 ? 0 : prevIndex + 1
@@ -29,23 +60,33 @@ export default function Section2(){
             />
   })
 
-  const dots = Data.map(() => {
-    return <div className="h-2 w-2 rounded-full border border-primary inline-block mr-1" key={nanoid()}></div>
+  const dots = Data.map((_, ind) => {
+    
+    return <div className={`h-2 w-2 rounded-full border border-primary inline-block mr-1 ${
+      index === ind ? 'bg-primary' : ''
+    }`} key={nanoid()}
+    onClick={() => {
+      setIndex(ind);
+    }}
+    ></div>
   })
   return(
     <section className="pt-8">
       <div>
         <h3 className="text-center text-4xl font-bold font-primary text-secondary">What they’ve said</h3>
       </div>
-      <div className="pt-20 overflow-hidden w-screen">
-        <div className="whitespace-nowrap ease-linear duration-1000"
-          style={{transform: `translate3d(${-index * 100}%, 0, 0)` }}
+      <div className="pt-20 overflow-hidden">
+        <div className="whitespace-nowrap ease-linear duration-1000 w-screen  lg:flex lg:overflow-y-visible lg:overflow-x-scroll"
+          style={{transform: size }}
         >
          {elements}
         </div>
       </div>
-      <div className="text-center mt-4">
+      <div className="text-center mt-4 lg:hidden">
         {dots}
+      </div>
+      <div className="mt-4  flex justify-center">
+        <button className="py-3 bg-primary px-7 rounded-full text-xs text-primary-light hover:cursor-pointer hover:opacity-50 shadow shadow-primary">Get Started</button>
       </div>
     </section>
   )
