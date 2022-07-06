@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */;
+const plugin = require('tailwindcss/plugin');
 module.exports = {
   mode: 'jit',
   content: [
@@ -9,6 +10,9 @@ module.exports = {
     "./src/components/ManageDiv.{js,jsx,ts,tsx}",
     "./src/components/Section2.{js,jsx,ts,tsx}",
     "./src/components/FeedbackDiv.{js,jsx,ts,tsx}",
+    "./src/components/Main.{js,jsx,ts,tsx}",
+    "./src/components/Section3.{js,jsx,ts,tsx}",
+    "./src/components/Footer.{js,jsx,ts,tsx}",
 
   ],
   theme: {
@@ -31,7 +35,10 @@ module.exports = {
         'primary' : ['"Be Vietnam Pro"', 'sans-serif']
       },
       backgroundImage:{
-        'primary-bg': "url('./images/bg-tablet-pattern.svg')"
+        'primary-bg': "url('./images/bg-tablet-pattern.svg')",
+        'secondary-bg' : "url('./images/bg-simplify-section-mobile.svg')",
+        'simplify-bg' : "url('./images/bg-simplify-section-desktop.svg')"
+
       },
       backgroundSize: {
         '50%': '50%',
@@ -39,5 +46,23 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* IE and Edge */
+          '-ms-overflow-style': 'none',
+
+          /* Firefox */
+          'scrollbar-width': 'none',
+
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      }
+      )
+    })
+  ],
 }

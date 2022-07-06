@@ -11,6 +11,9 @@ body{
 .move2{
   background-position: right -240px top 350px;
 }
+.move3{
+  background-position: top 250px left -440px;
+}
 
 @media only screen and (max-width: 425px){
 	/*Small smartphones [325px -> 425px]*/
