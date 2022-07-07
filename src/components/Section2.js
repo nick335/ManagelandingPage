@@ -76,7 +76,7 @@ export default function Section2(){
         <h3 className="text-center text-4xl font-bold font-primary text-secondary">What they’ve said</h3>
       </div>
       <div className="pt-20 overflow-hidden">
-        <div className="whitespace-nowrap ease-linear duration-1000 w-screen  lg:flex  lg:overflow-x-scroll scrollbar-hide"
+        <div className="whitespace-nowrap ease-linear duration-1000 w-screen  lg:flex  lg:overflow-x-auto scrollbar-hide"
           style={{transform: size }}
         >
          {elements}
@@ -86,7 +86,7 @@ export default function Section2(){
         {dots}
       </div>
       <div className="mt-4  flex justify-center">
-        <button className="py-3 bg-primary px-7 rounded-full text-xs text-primary-light lg:hover:cursor-pointer lg:hover:opacity-50 shadow shadow-primary">Get Started</button>
+        <button className="py-3 bg-primary px-7 rounded-full text-xs text-primary-light lg:hover:cursor-pointer lg:hover:opacity-90 shadow shadow-primary outline-none">Get Started</button>
       </div>
     </section>
   )

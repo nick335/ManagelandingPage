@@ -13,6 +13,11 @@ module.exports = {
     "./src/components/Main.{js,jsx,ts,tsx}",
     "./src/components/Section3.{js,jsx,ts,tsx}",
     "./src/components/Footer.{js,jsx,ts,tsx}",
+    "./src/components/svg/Instagram.{js,jsx,ts,tsx}",
+    "./src/components/svg/Twitter.{js,jsx,ts,tsx}",
+    "./src/components/svg/Youtube.{js,jsx,ts,tsx}",
+    "./src/components/svg/Pinterest.{js,jsx,ts,tsx}",
+  
 
   ],
   theme: {
@@ -29,7 +34,8 @@ module.exports = {
         },
         'light-gray' : '#fafafa',
         'dark-rgba' : 'rgba(0,0,0, 0.7)',
-        'light-rgba' : 'rgba(0,0,0, 0.1)'
+        'light-rgba' : 'rgba(0,0,0, 0.1)',
+        'white-overlay': 'rgba(225,225,225,0.9)'
       },
       fontFamily: {
         'primary' : ['"Be Vietnam Pro"', 'sans-serif']
