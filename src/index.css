@@ -27,3 +27,9 @@ body{
     background-position: right -130px top -60px;
   }
 }
+
+.secbg{
+  background-image: url('./images/bg-simplify-section-mobile.svg');
+  background-size: cover;
+  background-position: center;
+}
